@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="add_review__main">
+        <h4 class="add_review__title">{{title}}</h4>
+        <div class="add_review__block">
+            <form class="add_review__form" action="{% url 'add_review' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                    {% for f in form %}
+                        <p><label class="form-label"  for="{{ f.id_for_label }}">{{f.label}}</label>{{ f }}</p>
+                        {{ filmeview.content.html|safe }}
+                        <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                <button class='add_review__button' type="submit">Add  review</button>
+            </form>
+            <div>
+                <img class="add_review__icon" src="../static/media/book_add_icon.png" alt="book_add_icon.png">
+            </div>
+        </div>
+    </div>
+{% endblock %}

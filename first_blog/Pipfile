@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+pillow = "*"
+django-quill-editor = "*"
+django-debug-toolbar = "*"
+django-simple-captcha = "*"
+pytest = "*"
+faker = "*"
+pytest-factoryboy = "*"
+factory-boy = "*"
+pytest-django = "*"
+selenium = "*"
+webdriver-manager = "*"
+psycopg2-binary = "*"
+flake8 = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

@@ -1,0 +1,111 @@
+{% load static %}
+{% load categories_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="{% static 'media/icon.png' %}" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ form.media }}
+</head>
+<body>
+<header>
+    {% block mainmenu %}
+    <div class="main_header main_header__actions">
+        <div class="main_header__menu_info">
+            {% if request.user.is_authenticated %}
+                {% for a in auth_menu %}
+                        <a href="{% url a.url_name %}">{{a.title}}</a>
+                {% endfor %}
+            {% else %}
+                {% for m in menu %}
+                        <a href="{% url m.url_name %}">{{m.title}}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="main_header__user_auth">
+            {% if request.user.is_authenticated %}
+                <p class="main_header__user_auth_name"> Hello, {{user.username}}</p>
+                <a сlass="main_header__logout" href="{% url 'logout' %}">Log out</a>
+            {% else %}
+                <a class="main_header__log" href="{% url 'login' %}">Login</a>
+                <a class="main_header__reg" href="{% url 'register' %}">Registration</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="main_header main_header__icon">
+        <a href="{% url 'home' %}"><img class="main_header__main_icon" src="../../../static/media/main_icon.png" alt="main_icon"/></a>
+    </div>
+    <div class="main_header main_header__decoration"></div>
+    {% endblock mainmenu %}
+</header>
+<main class="main">
+    <div class="base_choose">
+        {% if cat_selected == 0 %}
+            <p class="base_choose_item base_choose__selected">CHOOSE CATEGORY</p>
+        {% else %}
+            <a class="base_choose_item" href="{% url 'home' %}">READ REVIEWS</a>
+        {% endif %}
+        {% for c in cats %}
+            {% if c.filmreview__count > 0 %}
+            {% if c.pk == cat_selected %}
+                <p class="base_choose_item base_choose__selected">{{c.name}}</p>
+            {% else %}
+                <a class="base_choose_item" href="{{ c.get_absolute_url }}">{{c.name}}</a>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% block content %}
+    {% endblock %}
+    <nav class="list-pages">
+        <ul>
+            {% if page_obj.has_previous %}
+                <li class="page-num">
+                     <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                </li>
+            {% endif %}
+            <div class="content-text">
+                {% for p in paginator.page_range %}
+                    {% if page_obj.number == p %}
+                        <li class="page-num page-num-selected">{{ p }}</li>
+                    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+                        <li class="page-num">
+                            <a href="?page={{ p }}">{{ p }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-num">
+                        <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                    </li>
+                {% endif %}
+            </div>
+        </ul>
+    </nav>
+    <div class="list-pages">
+        {% if page_object.has_previous %}
+            <div class="page-num">
+                <a href="?page={{ page_object.previous_page_number }}">&lt;</a>
+            </div>
+        {% endif %}
+        {% for p in paginator.page_range %}
+            {% if page_object.number == p %}
+                <div class="page-num page-num-selected">{{ p }}</div>
+            {% elif p >= page_object.number|add:-2 and p <= page_object.number|add:2  %}
+                <div class="page-num">
+                    <a href="?page={{ p }}">{{ p }}</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% if page_object.has_next %}
+            <div class="page-num">
+                <a href="?page={{ page_object.next_page_number }}">&gt;</a>
+            </div>
+        {% endif %}
+    </div>
+</main>
+</body>
+</html>

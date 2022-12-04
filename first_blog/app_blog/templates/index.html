@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="index__list_articles">
+		{% for p in posts %}
+			<div class="index__list_articles_main">
+				<div class="index__list_articles_info">
+					<p class="first">Category: {{p.cat}}</p>
+					<p class="last">Date: {{p.time_update|date:"d-m-Y H:i:s"}}</p>
+				</div>
+				<div class="index__list_articles_title">
+					<h2>{{p.title}}</h2>
+				</div>
+				<div class="index__list_articles_photo">
+					{% if p.photo %}
+						<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+					{% endif %}
+				</div>
+				<div class="index__list_articles_content">
+					{% autoescape on %}
+						<div>
+							{{ p.content.html|safe|linebreaks|truncatechars:40 }}
+						</div>
+					{% endautoescape %}
+				</div>
+				<div class="index__list_articles_btn">
+					<p><a href="{{ p.get_absolute_url }}">READ MORE</a></p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
+

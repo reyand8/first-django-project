@@ -1,0 +1,45 @@
+
+.main_header__actions{
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 28px;
+
+  .main_header__menu_info a{
+    padding-right: 18px;
+  }
+
+  .main_header__user_auth a{
+    padding-right: 18px;
+  }
+
+  .main_header__user_auth{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .main_header__user_auth_name{
+    margin-right: 20px;
+    font-weight: 700;
+  }
+
+  .main_header__log{
+    margin-right: 18px;
+  }
+}
+
+.main_header__icon {
+  display: flex;
+  justify-content: center;
+
+  .main_header__main_icon{
+    max-width: 420px;
+    width: 100%;
+  }
+}
+
+.main_header__decoration{
+  max-width: 800px;
+  width: 100%;
+  border: 0.3px solid rgb(210, 210, 210);
+  margin: 0 auto;
+}

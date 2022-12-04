@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  redis:
+    image: "redis:7.0"
+  nginx:
+      build: nginx
+      ports:
+        - "80:80"
+      volumes:
+        - static_data:/var/www/html/static
+        - .:/media
+        - ./nginx-conf.d:/etc/nginx/conf.d
+      depends_on:
+        - app
+  app:
+    build: .
+    platform: linux/amd64
+    command: bash -c "sleep 3 && python3 ./manage.py makemigrations && python3 ./manage.py migrate && python3 ./manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/first-blog
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:15.0-alpine
+    volumes:
+      - .postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "django_db"
+      POSTGRES_USER: "django_user"
+      POSTGRES_PASSWORD: "postgres"
+volumes:
+  postgres_data:
+  static_data:

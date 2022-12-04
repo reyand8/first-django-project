@@ -1,0 +1,27 @@
+
+.review_detail{
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 60px 260px;
+  border: 0.3px solid rgb(210, 210, 210);
+  max-width: 840px;
+  width: 100%;
+}
+
+.review_detail h2 {
+  border-bottom: 0.3px solid rgb(210, 210, 210);
+  margin: 10px;
+}
+
+.review_detail_content{
+  margin: 14px;
+}
+
+.review_detail_content__img{
+  max-width: 790px;
+  width: 100%;
+}
+
+.review_detail_content__text {
+  word-wrap: break-word;
+}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="block_login__main">
+    <h4 class="reg_log__title_menu">{{title}}</h4>
+    <div  class="reg_log__add_menu">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+            <button class='reg_log__button' type="submit">LOG IN</button>
+        </form>
+        <div>
+            <img class="reg_log__icon" src="../static/media/cam_log_icon.png" alt="cam_log_icon.png">
+        </div>
+    </div>
+</div>
+{% endblock %}

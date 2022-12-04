@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="review_detail">
+        <h2>{{post.title}}</h2>
+        <div class="review_detail_content">
+            {% if post.photo %}
+                <p><img class="review_detail_content__img" src="{{post.photo.url}}"></p>
+            {% endif %}
+            <div class="review_detail_content__text">
+                 {{post.content.html|safe|linebreaks}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

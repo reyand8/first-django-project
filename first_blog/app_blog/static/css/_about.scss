@@ -1,0 +1,42 @@
+
+.about_us__block{
+  margin: 0 auto;
+  max-width: 890px;
+  width: 100%;
+
+  .about_us__title{
+    font-size: 28px;
+    margin-left: 90px;
+    color: #262F30;
+  }
+
+  .about_us__content {
+    padding: 40px 50px 40px 90px;
+  }
+
+  .about_us__text{
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  .about_us__img{
+    float: right;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .about_us__text_href{
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .about_us__title {
+    margin-left: 40px;
+  }
+
+  .about_us__content {
+    padding: 10px 30px 10px 40px;
+  }
+}
