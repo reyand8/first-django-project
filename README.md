@@ -36,4 +36,11 @@ $ docker-compose run app python3 manage.py createsuperuser
 You can find more related commands using <a href="https://docs.docker.com/engine/reference/commandline/compose/#child-commands">docker docs</a>
 
 
-Below you can find some screenshots of the project 
+Below you can see some screenshots of the project:
+
+<img width="1420" alt="blog_one" src="https://user-images.githubusercontent.com/78079137/205903984-16a6b764-90f2-4db4-a0e1-785a6db6857b.png">
+<img width="1420" alt="blog_two" src="https://user-images.githubusercontent.com/78079137/205903424-ebddf10a-99ca-415a-80b7-a495b1af50d0.png">
+<img width="1420" alt="blog_three" src="https://user-images.githubusercontent.com/78079137/205903443-21f90717-aab8-4c7e-a1de-d9473506f75e.png">
+<img width="1434" alt="blog_four" src="https://user-images.githubusercontent.com/78079137/205904288-9ce75b6c-bd45-45ac-aade-c3038aebe0e2.png">
+
+
